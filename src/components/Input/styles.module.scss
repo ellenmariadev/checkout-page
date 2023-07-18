@@ -1,0 +1,49 @@
+@use "../../sass/abstracts/" as *;
+
+.relative {
+  position: relative;
+}
+
+.label {
+  transition: all 0.1s ease-in-out;
+  position: absolute;
+  top: 12%;
+  left: 10px;
+  transform: scale(0.95);
+  opacity: 1;
+  pointer-events: none;
+  font-size: map-get($map: $sizes, $key: 14);
+  font-weight: $fw-700;
+  color: $dark-color;
+}
+
+.input:focus ~ label,
+.input:not(:placeholder-shown) ~ .label {
+  top: 12%;
+  left: 10px;
+  background: transparent;
+  color: $dark-color;
+  opacity: 1;
+}
+
+.input {
+  transition: outline 0.2s ease;
+  outline-color: $accent-color;
+  border: 2px solid map-get(map-get($colors, neutral), 400);
+  padding: 25px 10px 12px 10px;
+  width: 100%;
+  font-size: map-get($map: $sizes, $key: 12);
+  border-radius: 4px;
+  font-weight: $fw-700;
+  color: map-get(map-get($colors, neutral), 500);
+
+  &::placeholder {
+    color: map-get(map-get($colors, neutral), 500);
+  }
+}
+
+.input:focus {
+  box-shadow:
+    0 0 0 0px transparent,
+    0 0 0 2px $lighten-accent-color;
+}
