@@ -9,7 +9,7 @@ import {
 } from "date-fns";
 import { DayPicker, Row, useInput } from "react-day-picker";
 import { ptBR } from "date-fns/locale";
-import Input from "../Input";
+import { Input } from "../Input";
 import "react-day-picker/dist/style.css";
 import S from "./styles.module.scss";
 

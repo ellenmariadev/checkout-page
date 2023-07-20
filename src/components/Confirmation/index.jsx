@@ -1,6 +1,6 @@
 import S from "./styles.module.scss";
 
-const Confirmation = ({ setShowModal }) => {
+export const Confirmation = ({ setShowModal }) => {
   const handleCloseModal = () => {
     setShowModal(false);
     window.location.reload();
@@ -33,5 +33,3 @@ const Confirmation = ({ setShowModal }) => {
     </div>
   );
 };
-
-export default Confirmation;

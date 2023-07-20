@@ -1,9 +1,9 @@
 import { useState, useRef, forwardRef, useEffect } from "react";
-import Input from "../Input";
+import { Input } from "../Input";
 import axios from "axios";
 import S from "./styles.module.scss";
 
-const DropdownCity = forwardRef((props, ref) => {
+export const DropdownCity = forwardRef((props, ref) => {
   const { setValue, errors } = props;
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -116,5 +116,3 @@ const DropdownCity = forwardRef((props, ref) => {
     </div>
   );
 });
-
-export default DropdownCity;

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import S from "./styles.module.scss";
 
-const Input = forwardRef(({ errors, ...props }, ref) => {
+export const Input = forwardRef(({ errors, ...props }, ref) => {
   let { name } = props;
   const renderErrorMessage = () => {
     return errors[name]?.message || "";
@@ -23,5 +23,3 @@ const Input = forwardRef(({ errors, ...props }, ref) => {
     </div>
   );
 });
-
-export default Input;
