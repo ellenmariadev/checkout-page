@@ -39,3 +39,23 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.error {
+  border-color: map-get(map-get($colors, primary), 400) !important;
+}
+
+.error__message {
+  color: map-get(map-get($colors, primary), 400);
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.error__input {
+  color: map-get(map-get($colors, primary), 400);
+  font-size: map-get($map: $sizes, $key: 12);
+}
+
+.preventScroll {
+  overflow: hidden;
+  pointer-events: none;
+}
