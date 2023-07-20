@@ -2,6 +2,9 @@
 
 .relative {
   position: relative;
+  p {
+    padding-top: 4px;
+  }
 }
 
 .label {
@@ -12,7 +15,7 @@
   transform: scale(0.95);
   opacity: 1;
   pointer-events: none;
-  font-size: map-get($map: $sizes, $key: 14);
+  font-size: $fs-14;
   font-weight: $fw-700;
   color: $dark-color;
 }
@@ -32,7 +35,7 @@
   border: 2px solid map-get(map-get($colors, neutral), 400);
   padding: 25px 10px 12px 10px;
   width: 100%;
-  font-size: map-get($map: $sizes, $key: 12);
+  font-size: $fs-12;
   border-radius: 4px;
   font-weight: $fw-700;
   color: map-get(map-get($colors, neutral), 500);
@@ -40,10 +43,4 @@
   &::placeholder {
     color: map-get(map-get($colors, neutral), 500);
   }
-}
-
-.input:focus {
-  box-shadow:
-    0 0 0 0px transparent,
-    0 0 0 2px $lighten-accent-color;
 }
