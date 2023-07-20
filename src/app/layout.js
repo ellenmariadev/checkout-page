@@ -1,7 +1,7 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
+import "@/sass/main.scss";
+import { Cabin } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const cabin = Cabin({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export const metadata = {
   title: "Checkout | Wizzi",
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={cabin.className}>{children}</body>
     </html>
   );
 }
