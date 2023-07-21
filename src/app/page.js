@@ -43,6 +43,10 @@ export default function Home() {
     }
   }, [showModal]);
 
+  const textPatternCity = /^[A-Za-z\s,áÁâÂãÃàÀéÉêÊíÍóÓôÔõÕúüÚçÇ()]+$/;
+  const textPatternName = /^[A-Za-z\sáÁâÂãÃàÀéÉêÊíÍóÓôÔõÕúüÚçÇ]+$/;
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
   return (
     <>
       <header className="header">
@@ -69,7 +73,7 @@ export default function Home() {
             {...register("origin", {
               required: true,
               pattern: {
-                value: /^[A-Za-z]+$/,
+                value: textPatternCity,
                 message: "A cidade deve conter apenas letras.",
               },
             })}
@@ -81,7 +85,7 @@ export default function Home() {
             {...register("destiny", {
               required: true,
               pattern: {
-                value: /^[A-Za-z]+$/,
+                value: textPatternCity,
                 message: "A cidade deve conter apenas letras.",
               },
               validate: (value) =>
@@ -149,7 +153,7 @@ export default function Home() {
                 message: "Nome deve ter no máximo 50 caracteres.",
               },
               pattern: {
-                value: /^[A-Za-z]+$/,
+                value: textPatternName,
                 message: "O nome deve conter apenas letras.",
               },
             })}
@@ -164,7 +168,7 @@ export default function Home() {
             {...register("email", {
               required: true,
               pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                value: emailPattern,
                 message: "Insira um e-mail válido",
               },
             })}
