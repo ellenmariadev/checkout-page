@@ -1,7 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Confirmation, Button, DatePicker, Count, Input, DropdownCity } from "@/components";
+import {
+  Confirmation,
+  Button,
+  DatePicker,
+  Count,
+  Input,
+  DropdownCity,
+} from "@/components";
 
 export default function Home() {
   const [counts, setCounts] = useState([
@@ -18,7 +25,6 @@ export default function Home() {
     watch,
     setValue,
     formState: { errors },
-    reset,
   } = useForm();
 
   const dateInitial = watch("initialdate");
@@ -45,7 +51,7 @@ export default function Home() {
       </header>
       <main className="main | container">
         {showModal && <Confirmation setShowModal={setShowModal} />}
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
           <DatePicker
             datei={register("initialdate", { required: true })}
             setValue={setValue}
@@ -60,7 +66,13 @@ export default function Home() {
             label="Origem"
             registername="origin"
             setValue={setValue}
-            {...register("origin", { required: true })}
+            {...register("origin", {
+              required: true,
+              pattern: {
+                value: /^[A-Za-z]+$/,
+                message: "A cidade deve conter apenas letras.",
+              },
+            })}
             errors={errors}
           />
           <DropdownCity
@@ -68,12 +80,15 @@ export default function Home() {
             registername="destiny"
             {...register("destiny", {
               required: true,
+              pattern: {
+                value: /^[A-Za-z]+$/,
+                message: "A cidade deve conter apenas letras.",
+              },
               validate: (value) =>
                 value !== cityInitial || "Escolha um destino diferente.",
             })}
             setValue={setValue}
             errors={errors}
-            reset={reset}
           />
           <h3>
             <strong>◌</strong> Informações dos passageiros
@@ -122,8 +137,22 @@ export default function Home() {
             placeholder="Insira seu nome"
             type="text"
             label="Nome Completo"
-            name="namecomplete"
-            {...register("namecomplete", { required: true })}
+            name="fullname"
+            {...register("fullname", {
+              required: true,
+              minLength: {
+                value: 3,
+                message: "Nome deve ter no mínimo 3 caracteres.",
+              },
+              maxLength: {
+                value: 50,
+                message: "Nome deve ter no máximo 50 caracteres.",
+              },
+              pattern: {
+                value: /^[A-Za-z]+$/,
+                message: "O nome deve conter apenas letras.",
+              },
+            })}
             newclass={`${errors.namecomplete ? "error" : ""}`}
             errors={errors}
           />
