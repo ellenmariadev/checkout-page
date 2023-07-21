@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import S from "./styles.module.scss";
+import { DateIcon, NameIcon, EmailIcon, LocationIcon } from "@/assets";
 
 export const Input = forwardRef(({ errors, ...props }, ref) => {
   let { name } = props;
@@ -11,6 +12,7 @@ export const Input = forwardRef(({ errors, ...props }, ref) => {
     <div className={S.relative}>
       <input
         {...props}
+        htmlFor={props.name}
         type={props.type}
         name={props.name}
         className={`${S.input} ${props.newclass}`}
@@ -18,7 +20,17 @@ export const Input = forwardRef(({ errors, ...props }, ref) => {
         ref={ref}
         autoComplete="off"
       />
-      <label className={S.label}>{props.label}</label>
+      <button className={S.input__icon}>
+        {name === "initialdate" && <DateIcon />}
+        {name === "finaldate" && <DateIcon />}
+        {name === "fullname" && <NameIcon />}
+        {name === "email" && <EmailIcon />}
+        {name === "origin" && <LocationIcon />}
+        {name === "destiny" && <LocationIcon />}
+      </button>
+      <label id={props.name} className={S.label}>
+        {props.label}
+      </label>
       <p className="error__input">{renderErrorMessage()}</p>
     </div>
   );

@@ -30,7 +30,6 @@
 }
 
 .input {
-  transition: outline 0.2s ease;
   outline-color: $accent-color;
   border: 2px solid map-get(map-get($colors, neutral), 400);
   padding: 25px 10px 12px 10px;
@@ -39,8 +38,21 @@
   border-radius: 4px;
   font-weight: $fw-700;
   color: map-get(map-get($colors, neutral), 500);
+  margin-right: -2rem;
 
   &::placeholder {
     color: map-get(map-get($colors, neutral), 500);
+  }
+
+  &:focus-visible {
+    border-color: $accent-color;
+  }
+
+  &__icon {
+    border: none;
+    background: none;
+    pointer-events: none;
+    margin-top: 0.1em;
+    outline: none;
   }
 }
