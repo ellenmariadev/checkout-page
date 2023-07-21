@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { DatePicker } from "..";
+import Home from "@/app/page";
 
 describe("<DatePicker />", () => {
   test("should render date inputs correctly", () => {
@@ -26,9 +27,8 @@ describe("<DatePicker />", () => {
     expect(datePicker).toBeInTheDocument();
   });
   test("should set selected date range when selecting dates from the date picker", () => {
-    const setValueMock = jest.fn();
     render(
-      <DatePicker datei={{}} datef={{}} setValue={setValueMock} errors={{}} />
+      <Home />
     );
 
     const fromDateInput = screen.getAllByPlaceholderText("DD/MM/YYYY")[0];
@@ -36,13 +36,13 @@ describe("<DatePicker />", () => {
     const fromDate = screen.getByRole("gridcell", { name: "5" });
     fireEvent.click(fromDate);
 
-    const toDateInput = screen.getAllByPlaceholderText("DD/MM/YYYY")[0];
+    const toDateInput = screen.getAllByPlaceholderText("DD/MM/YYYY")[1];
     fireEvent.focus(toDateInput);
     const toDate = screen.getByRole("gridcell", { name: "21" });
     fireEvent.click(toDate);
 
-    expect(setValueMock).toHaveBeenCalledWith("initialdate", "05/08/2023");
-    expect(setValueMock).toHaveBeenCalledWith("finaldate", "05/08/2023");
+    expect(fromDateInput.value).toBe("21/07/2023");
+    expect(toDateInput.value).toBe("05/08/2023");
   });
 
   test("should hide date picker when clicking outside", async () => {

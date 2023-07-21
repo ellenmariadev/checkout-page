@@ -61,8 +61,9 @@ export const Count = forwardRef(
           -
         </button>
         <div className={`${S.count__card} ${errors[title] ? "error" : ""}`}>
-          <p>{title}</p>
+          <label htmlFor={title}>{title}</label>
           <input
+            id={title}
             type="number"
             value={isNaN(count) ? "" : count}
             className={S.count__number}

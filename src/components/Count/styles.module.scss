@@ -44,7 +44,7 @@
     padding: 0.5em;
     margin-inline: 1em;
 
-    p {
+    label {
       color: map-get(map-get($colors, neutral), 500);
       margin: 0;
     }

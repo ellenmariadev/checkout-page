@@ -43,8 +43,8 @@ export default function Home() {
     }
   }, [showModal]);
 
-  const textPatternCity = /^[A-Za-z\s,áÁâÂãÃàÀéÉêÊíÍóÓôÔõÕúüÚçÇ()]+$/;
-  const textPatternName = /^[A-Za-z\sáÁâÂãÃàÀéÉêÊíÍóÓôÔõÕúüÚçÇ]+$/;
+  const textPatternCity = /^[A-Za-z\s,áÁâÂãÃàÀéÉêÊíÍóÓôÔõÕīúüÚçÇ()]+$/;
+  const textPatternName = /^[A-Za-z\sáÁâÂãÃàÀéÉêÊíÍóÓôÔõÕīúüÚçÇ]+$/;
   const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
   return (
@@ -116,18 +116,14 @@ export default function Home() {
                 <p>Total</p>
                 <span>{totalCount}</span>
               </li>
-              <div>
-                <li className="count__single">
-                  <p>
-                    <strong>◌</strong> {counts[0].count} Adultos
-                  </p>
-                </li>
-                <li className="count__single">
-                  <p>
-                    <strong>◌</strong> {counts[1].count} Crianças
-                  </p>
-                </li>
-              </div>
+              <li className="count__single">
+                <p>
+                  <strong>◌</strong> {counts[0].count} Adultos
+                </p>
+                <p>
+                  <strong>◌</strong> {counts[1].count} Crianças
+                </p>
+              </li>
             </ul>
             <span
               className="error__input"
