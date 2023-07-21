@@ -5,7 +5,7 @@
   padding-bottom: $section-padding;
 
   @include breakpoint-up(large) {
-    background-image: url("../../../public/images/people.png");
+    background-image: url("../../assets/images/people.png");
     background-repeat: no-repeat;
     background-position: left;
   }
