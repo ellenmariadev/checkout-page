@@ -1,5 +1,7 @@
 import { useState, useRef, forwardRef } from "react";
 import S from "./styles.module.scss";
+import { AdultsIcon } from "@/assets";
+import { ChildrenIcon } from "@/assets/icons/children";
 
 export const Count = forwardRef(
   ({ title, setCounts, setValue, errors }, ref) => {
@@ -61,6 +63,7 @@ export const Count = forwardRef(
           -
         </button>
         <div className={`${S.count__card} ${errors[title] ? "error" : ""}`}>
+          {title === "Adultos" ? <AdultsIcon /> : <ChildrenIcon />}
           <label htmlFor={title}>{title}</label>
           <input
             id={title}
