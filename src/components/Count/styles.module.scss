@@ -12,6 +12,15 @@
     background-color: $lighten-accent-color;
     color: $accent-color;
     cursor: pointer;
+    transition-duration: 200ms;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
   }
 
   &__number {

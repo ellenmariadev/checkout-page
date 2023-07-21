@@ -63,8 +63,6 @@ export const Count = forwardRef(
         <div className={`${S.count__card} ${errors[title] ? "error" : ""}`}>
           <p>{title}</p>
           <input
-            min={0}
-            max={50}
             type="number"
             value={isNaN(count) ? "" : count}
             className={S.count__number}
@@ -75,7 +73,8 @@ export const Count = forwardRef(
           />
         </div>
         <button
-          className={`${S.count__button}`}
+          disabled={count < 50 ? false : true}
+          className={`${S.count__button} ${count < 50 ? "" : "disabled"}`}
           title="Adicionar mais um"
           onClick={handleIncrement}
         >
