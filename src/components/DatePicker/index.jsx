@@ -22,13 +22,13 @@ export const DatePicker = ({ datei, datef, setValue, errors }) => {
 
   const { inputProps } = useInput({
     defaultSelected: new Date(),
-    format: "dd/MM/y",
+    format: "dd/MM/yyyy",
     required: true,
   });
 
   const handleFromChange = (e) => {
     setFromValue(e.target.value);
-    const date = parse(e.target.value, "dd/MM/y", new Date());
+    const date = parse(e.target.value, "dd/MM/yyyy", new Date());
     if (!isValid(date)) {
       return setSelectedRange({ from: undefined, to: undefined });
     }
@@ -48,7 +48,7 @@ export const DatePicker = ({ datei, datef, setValue, errors }) => {
 
   const handleToChange = (e) => {
     setToValue(e.target.value);
-    const date = parse(e.target.value, "dd/MM/y", new Date());
+    const date = parse(e.target.value, "dd/MM/yyyy", new Date());
 
     if (!isValid(date)) {
       return setSelectedRange({ from: selectedRange?.from, to: undefined });
@@ -65,14 +65,14 @@ export const DatePicker = ({ datei, datef, setValue, errors }) => {
   const handleRangeSelect = (range) => {
     setSelectedRange(range);
     if (range?.from) {
-      setFromValue(format(range.from, "dd/MM/y"));
-      setValue("initialdate", format(range.from, "dd/MM/y"));
+      setFromValue(format(range.from, "dd/MM/yyyy"));
+      setValue("initialdate", format(range.from, "dd/MM/yyyy"));
     } else {
       setFromValue("");
     }
     if (range?.to) {
-      setToValue(format(range.to, "dd/MM/y"));
-      setValue("finaldate", format(range.to, "dd/MM/y"));
+      setToValue(format(range.to, "dd/MM/yyyy"));
+      setValue("finaldate", format(range.to, "dd/MM/yyyy"));
     } else {
       setToValue("");
     }
@@ -144,6 +144,7 @@ export const DatePicker = ({ datei, datef, setValue, errors }) => {
             onSelect={handleRangeSelect}
             showOutsideDays
             locale={ptBR}
+            data-testid="daypicker"
           />
         </div>
       )}
