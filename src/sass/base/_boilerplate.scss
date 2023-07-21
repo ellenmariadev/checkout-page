@@ -9,9 +9,10 @@
 }
 
 body {
-  height: 100vh;
+  height: 100vh - 10vh;
   background-color: map-get(map-get($colors, neutral), 200);
   overflow-x: hidden;
+  margin-bottom: 10vh;
 }
 
 input,
